@@ -1,111 +1,109 @@
-# Time Series Analysis of Brent Oil Prices: Detecting Changes and Associating Causes
+# Brent Oil Price Analysis
 
-This project analyzes Brent oil prices from 1987-2022, detecting structural changes and associating them with major events to provide data-driven insights for the energy industry.
+## Project Overview
+This project aims to analyze the impact of significant political, economic, and technological events on Brent oil prices. By examining change points and applying statistical modeling techniques, the project provides insights for stakeholders, including investors, policymakers, and energy companies.
 
-## Table of Contents
-1. [Project Objective](#project-objective)
-2. [Technologies and Tools Used](#technologies-and-tools-used)
-3. [Exploratory Data Analysis EDA](#exploratory-data-analysis-eda)
-4. [Statistical and Econometric Models to Refine the Analysis](#statistical-and-econometric-models-to-refine-the-analysis)
-5. [Other Potential Factors Influencing Oil Prices](#other-potential-factors-influencing-oil-prices)
-6. [Contributing](#contributing)
-7. [License](#license)
+## Business Objective
+Birhan Energies, a leading consultancy firm in the energy sector, seeks actionable insights into how major events influence Brent oil prices. This project assists investors, analysts, and policymakers by revealing correlations between key events and oil price fluctuations.
 
-## Project Objective
-The primary objective of this project is to analyze how significant events such as political decisions, conflicts in oil-producing regions, global economic sanctions, and changes in OPEC policies—impact the price of Brent oil. This project will:
+## Dataset
+The dataset contains daily Brent oil prices from May 20, 1987, to September 30, 2022. Key fields:
+- **Date**: Date of record in `day-month-year` format.
+- **Price**: Brent oil price in USD per barrel.
 
-1. **Identify Key Events**: Pinpoint the major events over the past decade that have significantly influenced Brent oil prices.
-  
-2. **Measure Impact**: Assess the degree to which these events contribute to price fluctuations.
+## Learning Outcomes
+This project covers:
+- **Statistical Modeling**
+- **Change Point Analysis**
+- **Bayesian Inference using PyMC3**
+- **Time Series Analysis**
 
-3. **Provide Actionable Insights**: Deliver clear, actionable insights that will assist investors, policymakers, and energy companies in understanding and responding to these price changes effectively.
+## Tasks
+#### Task 1: Define Data Analysis Workflow and Understand the Model
+- **Objective:** Plan the analysis workflow and ensure a solid understanding of the data and statistical models.
+  - Outline the steps involved in analyzing the data.
+  - Familiarize with time series models (e.g., ARIMA, GARCH).
+  - Identify model inputs, parameters, and limitations.
 
-By tackling this issue, Birhan Energies aims to empower its clients to make informed decisions, manage risks more efficiently, and optimize strategies for investment, policy development, and operational planning within the energy sector.
+#### Task 2: Time Series Analysis and Model Application
+- **Objective:** Build on foundational knowledge to analyze Brent oil prices.
+  - Utilize statistical and econometric models (e.g., VAR, Markov-Switching ARIMA, LSTM) for complex pattern detection.
+  - Analyze economic indicators (GDP, inflation, unemployment) and their relationship to oil prices.
+  - Explore political, regulatory, and technological factors that influence oil prices.
+#### Task 3: Interactive Dashboard Development
+- **Objective:** Create a user-friendly dashboard to visualize analysis results.
+  - Develop a Flask-based backend and a React frontend for a seamless experience.
+  - Present historical trends, forecasts, and correlations with events through interactive visualizations.
 
+## File Structure
 
-## Technologies and Tools Used
+The project uses a modular structure to maintain clean, organized code.
 
-- **Programming Languages & Frameworks**: 
-  - Python
-- **Data Analysis & Manipulation**:
-  - Pandas
-  - NumPy
-  - Matplotlib
-  - Plotly
-  - Jupyter Notebook
+```bash
 
-- **Machine Learning & Modeling**:
-  - Scikit-learn
-  - PyMC3
-  - LSTM
-  - ARIMA (AutoRegressive Integrated Moving Average)
+    ├── .github/
+    ├── dashboard/
+    ├── notebooks/
+    │   ├── changePointAnalysis.ipynb
+    │   ├── oilprice_forcast_ARIMA.ipynb
+    │   ├── Oilprice_forcast_LTSM.ipynb
+    │   ├── Oilprice_forcast_ML_model.ipynb
+    ├── scripts/
+    │   ├── __init__.py
+    │   ├── app.py
+    │   ├── main.py
+    ├── src/
+    │     └── __init__.py       
+    │     ├── load_data.py
+    │     ├── oilprice_eda.py  
+    │     └── preprocessing.py  
+    │     ├── model_trainig.py      
+    │     └── README.md                           
+    ├── tests/
+    │   ├── __init__.py                  
+    │   ├── test_oilprice_eda.py 
+    │   ├── test_preprocessing.py               
+    ├── requirements.txt                     
+    ├── README.md    
+    └── Dockerfile                        
 
-- **Statistical Techniques**:
-  - Bayesian Inference
-  - Probability Distributions
-  - Statistical Modeling
-  - Bayesian Modeling
+```
 
-- **Development Practices**:
-  - Continuous Integration/Continuous Deployment (CI/CD)
-  - Version Control with Git
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/brent-oil-price-analysis.git
 
-- **Analysis Techniques**:
-  - Exploratory Data Analysis (EDA)
-  - Policy Analysis
+2. Navigate to the project directory:
+    ```bash
+    cd brent-oil-price-analysis
+    ```
+3. Install required packages.
+  ```bash
+  pip install -r requirements.txt
+  ```
+4. **Set Up Dashboard (Flask + React)**:
+   - Navigate to the `scripts` directory and start the Flask server:
+     ```bash
+     python app.py
+     ```
+   - Navigate to the `frontend` directory and start the React app:
+     ```bash
+     npm install
+     npm start
+     ```
 
-## Exploratory Data Analysis (EDA)
+5. **Access the Dashboard**:
+   Open your browser and go to `http://localhost:3000` to interact with the dashboard.
 
-This section provides an in-depth Exploratory Data Analysis (EDA) of the Brent oil price dataset. To access the complete EDA, please click the link below:
+### Visualization
 
-[View Full EDA Notebook](https://github.com/senaygui/AiML-brent-oil-price-analysis/blob/main/notebooks/eda.ipynb)
+The interactive dashboard provides the following visualization features:
 
-## Statistical and Econometric Models to Refine the Analysis
+- **Historical Trends**: Line charts displaying historical Brent oil price trends with highlighted events.
 
-#### ARIMA model to the Brent oil prices data
+![Price Trend](figures/price_trend.png) 
 
-<img src="https://github.com/senaygui/AiML-brent-oil-price-analysis/blob/main/assets/model/ARIMAModelResiduals.png" alt="ARIMAplot" />
+- **Forecasting and Predictions**: Displayed through charts (e.g., Recharts, Chart.js) for understanding future price movements based on selected models.
 
-#### LSTM (Long Short-Term Memory) Model
-
-The training and validation loss plot
-<img src="https://github.com/senaygui/AiML-brent-oil-price-analysis/blob/main/assets/model/ltsm_loss_plot.png" alt="ltsm plot" />
-
-The Actual vs Predicted prices plot
-<img src="https://github.com/senaygui/AiML-brent-oil-price-analysis/blob/main/assets/model/actual_vs_pridiction_plot.png" alt="ltsm plot"/>
-
-## Other Potential Factors Influencing Oil Price
-
-## Correlation between GDP growth rates of major economies and oil prices
-
-<img src="https://github.com/senaygui/AiML-brent-oil-price-analysis/blob/main/assets/eda/corre_btn_gdp_and_oil.png" alt="correlation plot" />
-
-Brent oil prices and GDP growth rates over time
-<img src="https://github.com/senaygui/AiML-brent-oil-price-analysis/blob/main/assets/eda/brent_oil_gdp_over_time.png" alt="correlation plot" />
-
-## Correlation between Unemployment rates & Oil consumption patterns
-
-Filtering the data points after 2012 and analyzing the correlation
-<img src="https://github.com/senaygui/AiML-brent-oil-price-analysis/blob/main/assets/eda/corr_matrix3_2012.png" alt="correlation plot" width="600"/>
-
-<img src="https://github.com/senaygui/AiML-brent-oil-price-analysis/blob/main/assets/eda/umemp_vs_oil_time_2012.png" alt="correlation plot" />
-
-## Analyzing the Effect of currency fluctuations (the USD) , on oil prices
-
-<img src="https://github.com/senaygui/AiML-brent-oil-price-analysis/blob/main/assets/eda/corr_matrix4_usd.png" alt="correlation plot" width="600"/>
-
-<img src="https://github.com/senaygui/AiML-brent-oil-price-analysis/blob/main/assets/eda/usd_oil_price_time.png" alt="correlation plot" />
-
-## Analyzing growth in renewable energy sources on oil demand and prices.
-
-<img src="https://github.com/senaygui/AiML-brent-oil-price-analysis/blob/main/assets/eda/corr_oil_renawable.png" alt="correlation plot" width="600"/>
-
-<img src="https://github.com/senaygui/AiML-brent-oil-price-analysis/blob/main/assets/model/reg_line_oil_renawable.png" alt="correlation plot" />
-
-## Contributing
-
-Contributions are welcome! Please fork the repository and submit a pull request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+![Dashboard](figures/dashboard-price.png)
